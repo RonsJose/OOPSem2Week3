@@ -21,4 +21,15 @@ public class CalculatorController {
         int result = calculatorService.add(a, b);
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping("/divide")
+    public ResponseEntity <?> divide(@RequestParam int a, @RequestParam int b) {
+        if (b == 0) {
+            return ResponseEntity
+                    .badRequest()
+                    .body("Division by zero is not allowed");
+        }
+        int result = calculatorService.divide(a, b);
+        return ResponseEntity.ok(result);
+    }
 }
