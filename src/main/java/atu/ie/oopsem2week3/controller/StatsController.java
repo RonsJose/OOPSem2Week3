@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/stats")
+@RequestMapping("/stats") // Base endpoint that this class listens for
 public class StatsController {
     private final StatsService statsService;
 
@@ -17,13 +17,13 @@ public class StatsController {
     }
     @GetMapping("/percentage")
     public ResponseEntity<?> percentage(@RequestParam int a, @RequestParam int b) {
-        if (a < 0 || b < 0) {
-            return ResponseEntity
+        if (a < 0 || b < 0) { //Checking to make sure that both numbers are positive
+            return ResponseEntity // Returns 400
                     .badRequest()
                     .body("Please enter a positive integer");
         }
 
-        float result = statsService.percentage(a, b);
-        return ResponseEntity.ok(result);
+        float result = statsService.percentage(a, b); //Calling service
+        return ResponseEntity.ok(result);//Returns
     }
 }
