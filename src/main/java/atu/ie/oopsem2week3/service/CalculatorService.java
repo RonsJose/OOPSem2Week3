@@ -2,6 +2,7 @@ package atu.ie.oopsem2week3.service;
 
 import org.springframework.stereotype.Service;
 
+//Service for adding and dividing
 @Service
 public class CalculatorService {
 
